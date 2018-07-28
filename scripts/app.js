@@ -37,8 +37,23 @@ class AddressBook {
 
   }
 
-  error(message, className) {
-
+  error(message) {
+    // Create Error div element
+    const errorDiv = document.createElement("div");
+    // Add class
+    errorDiv.className = `error`;
+    // Add text node
+    errorDiv.appendChild(document.createTextNode(message));
+    // Get parent
+    const container = document.querySelector(".form__container");
+    // Get form
+    const form = document.querySelector(".contact__form");
+    // Insert Error
+    container.insertBefore(errorDiv, form);
+    // Timout after 3 sec
+    setTimeout(function() {
+      document.querySelector(".error").remove();
+    }, 3000);
   }
 }
 
@@ -73,7 +88,7 @@ document.querySelector(".contact__form").addEventListener("submit", function(e) 
   // Validation
   if (name === "" || email === "" || phone === "" || relation === "") {
     // Error Message
-    addressBook.error("PLEASE FILL OUT ALL FIELDS!", "error");
+    addressBook.error("PLEASE FILL OUT ALL FIELDS!");
   } else {
     // Add Contact to AddressBook;
     addressBook.addContact(contact);

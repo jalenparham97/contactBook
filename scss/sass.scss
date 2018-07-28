@@ -2,6 +2,7 @@
 $form-background: rgba(179, 178, 176, .6);
 $contact-background: #d6d2d1;
 $overlay-color: rgba(0, 0, 0, .6);
+$error-color: rgba(252, 94, 94, .8);
 $black: #000;
 $white: #fff;
 
@@ -24,6 +25,14 @@ body {
   background: $form-background;
   padding: 50px 30px 20px 30px;
   border-radius: 5px;
+
+  & .error {
+    color: $white;
+    background: $error-color;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0 10px 0;
+  }
 
   & .title {
     color: $white;
