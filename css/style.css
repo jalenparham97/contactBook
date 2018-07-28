@@ -5,9 +5,10 @@
   font-family: 'Roboto', sans-serif; }
 
 body {
-  background: url(../img/addressbg.jpg), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  background: url(../img/addressbg.jpg), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), no-repeat;
   background-blend-mode: overlay;
-  background-size: cover; }
+  background-size: cover;
+  padding-bottom: 100px; }
 
 .form__container {
   width: 50%;
@@ -27,3 +28,26 @@ body {
       padding: 10px;
       border: 0;
       border-radius: 3px; }
+    .form__container .contact__form .submit__button {
+      cursor: pointer; }
+
+.contacts__container {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+  .contacts__container .contact {
+    background: #d6d2d1;
+    padding: 8px;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px 20px 10px 20px;
+    width: 200px; }
+    .contacts__container .contact .deleteBtn {
+      border: 1px solid #000;
+      border-radius: 50%;
+      position: absolute;
+      background: #d6d2d1;
+      left: 92%;
+      bottom: 1px;
+      cursor: pointer; }
