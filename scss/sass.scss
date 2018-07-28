@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$form-background: rgba(179, 178, 176, .6);
+$overlay-color: rgba(0, 0, 0, .6);
+$black: #000;
+$white: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: url(../img/addressbg.jpg), linear-gradient($overlay-color, $overlay-color);
+  background-blend-mode: overlay;
+  background-size: cover;
+}
+
+.form__container {
+  width: 50%;
+  margin: 100px auto;
+  background: $form-background;
+  padding: 50px 30px 20px 30px;
+  border-radius: 5px;
+
+  & .title {
+    color: $white;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  & .contact__form {
+    display: flex;
+    flex-direction: column;
+
+    & .form__input, .submit__button {
+      margin: 10px 0;
+      padding: 10px;
+      border: 0;
+      border-radius: 3px;
+    }
+  }
+
+}

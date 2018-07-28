@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif; }
+
+body {
+  background: url(../img/addressbg.jpg), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  background-blend-mode: overlay;
+  background-size: cover; }
+
+.form__container {
+  width: 50%;
+  margin: 100px auto;
+  background: rgba(179, 178, 176, 0.6);
+  padding: 50px 30px 20px 30px;
+  border-radius: 5px; }
+  .form__container .title {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50px; }
+  .form__container .contact__form {
+    display: flex;
+    flex-direction: column; }
+    .form__container .contact__form .form__input, .form__container .contact__form .submit__button {
+      margin: 10px 0;
+      padding: 10px;
+      border: 0;
+      border-radius: 3px; }
