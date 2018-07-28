@@ -64,9 +64,6 @@ body {
   flex-wrap: wrap;
 
   & .contact {
-    // display: flex;
-    // flex-direction: column;
-    // flex-wrap: wrap;
     background: $contact-background;
     padding: 8px;
     border-radius: 5px;
@@ -80,8 +77,12 @@ body {
       position: absolute;
       background: $contact-background;
       left: 92%;
-      bottom: 1px;
+      display: flex;
+      align-content: center;
+      bottom: .1px;
       cursor: pointer;
+      text-decoration: none;
+      color: $black;
     }
   }
 }

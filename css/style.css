@@ -55,5 +55,9 @@ body {
       position: absolute;
       background: #d6d2d1;
       left: 92%;
-      bottom: 1px;
-      cursor: pointer; }
+      display: flex;
+      align-content: center;
+      bottom: .1px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #000; }

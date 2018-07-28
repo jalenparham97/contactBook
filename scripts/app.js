@@ -8,20 +8,28 @@ class AddressBook {
 
   addContact(contact) {
     const contacts = document.querySelector(".contacts__container");
-    // Create div element
-    const div = document.createElement("div");
+    // Create li element
+    const li = document.createElement("li");
     // Add class to div
-    div.className = "contact";
+    li.className = "contact";
     // Insert HTML
-    div.innerHTML = `
+    li.innerHTML = `
+    <div class="contact__container"
     <p>Name: ${contact.name}</p>
     <p>Email: ${contact.email}</p>
     <p>Phone: ${contact.phone}</p>
     <p>Relation: ${contact.relation}</p>
-    <i class="material-icons deleteBtn">delete</i>
+    </div>
     `;
+    // Create a tag
+    const deleteBtn = document.createElement("a");
+    deleteBtn.innerHTML = `<i class="material-icons">delete</i>`;
+    // Add class to a tag
+    deleteBtn.classList.add("deleteBtn");
+    // Append a tag to li
+    li.appendChild(deleteBtn);
     // Append div to contacts
-    contacts.appendChild(div);
+    contacts.appendChild(li);
     // Clear Form Fields 
     document.querySelector("#name").value = "";
     document.querySelector("#email").value = "";
@@ -29,8 +37,10 @@ class AddressBook {
     document.querySelector("#relation").value = "";
   }
 
-  deleteContact() {
-
+  deleteContact(target) {
+    if (target.parentElement.classList.contains("deleteBtn")) {
+      target.parentElement.parentElement.remove();
+    }
   }
 
   displayContacts() {
@@ -71,7 +81,7 @@ class Contact {
 
 
 
-// Event Listeners
+// Event Listener for adding contact
 document.querySelector(".contact__form").addEventListener("submit", function(e) {
   // Get form values
   const name = document.querySelector("#name").value,
@@ -93,6 +103,16 @@ document.querySelector(".contact__form").addEventListener("submit", function(e) 
     // Add Contact to AddressBook;
     addressBook.addContact(contact);
   }
+
+  e.preventDefault();
+});
+
+// Event Listener for deleting contacts
+document.querySelector(".contacts__container").addEventListener("click", function(e) {
+  //Instantiate AddressBook
+  const addressBook = new AddressBook();
+
+  addressBook.deleteContact(e.target);
 
   e.preventDefault();
 });
