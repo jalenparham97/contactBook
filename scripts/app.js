@@ -1,10 +1,7 @@
 "use strict";
 
 // Contacts Class
-class AddressBook {
-  constructor () {
-    
-  }
+class AddressBook { 
 
   addContact(contact) {
     const contacts = document.querySelector(".contacts__container");
@@ -43,10 +40,46 @@ class AddressBook {
     }
   }
 
-  displayContacts() {
+  static getContacts() {
+    let contacts;
+    if (localStorage.getItem("contacts") === null) {
+      contacts = [];
+    } else {
+      contacts = JSON.parse(localStorage.getItem("contacts"));
+    }
 
+    return contacts;
   }
 
+  static storeContacts(contact) {
+    const contacts = AddressBook.getContacts();
+
+    contacts.push(contact);
+
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }
+
+  static displayContacts() {
+    const contacts = AddressBook.getContacts();
+
+    contacts.forEach((contact) => {
+      const addressBook = new AddressBook();
+
+      // Add contact to Address Book
+      addressBook.addContact(contact);
+    });
+  }
+  static removeContact(li) {
+    const contacts = AddressBook.getContacts();
+
+    contacts.forEach((contact, index) => {
+      if (contact.className === li.className) {
+        contacts.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }
   error(message) {
     // Create Error div element
     const errorDiv = document.createElement("div");
@@ -77,9 +110,8 @@ class Contact {
   }
 }
 
-
-
-
+// DOM Load Event
+document.addEventListener("DOMContentLoaded", AddressBook.displayContacts);
 
 // Event Listener for adding contact
 document.querySelector(".contact__form").addEventListener("submit", function(e) {
@@ -102,6 +134,9 @@ document.querySelector(".contact__form").addEventListener("submit", function(e) 
   } else {
     // Add Contact to AddressBook;
     addressBook.addContact(contact);
+
+    // Add to local storage 
+    AddressBook.storeContacts(contact);
   }
 
   e.preventDefault();
@@ -113,6 +148,9 @@ document.querySelector(".contacts__container").addEventListener("click", functio
   const addressBook = new AddressBook();
 
   addressBook.deleteContact(e.target);
+
+  // Remove from Local storage
+  AddressBook.removeContact(e.target.parentElement.parentElement.className);
 
   e.preventDefault();
 });

@@ -5,6 +5,7 @@ $overlay-color: rgba(0, 0, 0, .6);
 $error-color: rgba(252, 94, 94, .8);
 $black: #000;
 $white: #fff;
+$green: rgba(63, 156, 63, 0.7);
 
 * {
   margin: 0;
@@ -53,6 +54,11 @@ body {
 
     & .submit__button {
       cursor: pointer;
+
+      &:hover {
+        background: $green;
+        color: $white;
+      }
     }
   }
 }
